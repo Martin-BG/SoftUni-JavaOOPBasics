@@ -1,7 +1,7 @@
-package bg.softuni.judge;
+package BashSoft.src.bashsoft.judge;
 
-import bg.softuni.io.OutputWriter;
-import bg.softuni.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.io.OutputWriter;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
 
 import java.io.*;
 import java.nio.file.Files;

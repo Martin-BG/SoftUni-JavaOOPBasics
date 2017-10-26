@@ -1,10 +1,10 @@
-package bg.softuni.io;
+package BashSoft.src.bashsoft.io;
 
-import bg.softuni.judge.Tester;
-import bg.softuni.network.DownloadManager;
-import bg.softuni.repository.StudentsRepository;
-import bg.softuni.staticData.SessionData;
-import bg.softuni.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.judge.Tester;
+import BashSoft.src.bashsoft.network.DownloadManager;
+import BashSoft.src.bashsoft.repository.StudentsRepository;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.staticData.SessionData;
 
 import java.awt.*;
 import java.io.File;

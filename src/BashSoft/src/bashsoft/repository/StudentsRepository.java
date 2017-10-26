@@ -1,8 +1,8 @@
-package bg.softuni.repository;
+package BashSoft.src.bashsoft.repository;
 
-import bg.softuni.staticData.SessionData;
-import bg.softuni.io.OutputWriter;
-import bg.softuni.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.io.OutputWriter;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.staticData.SessionData;
 
 import java.io.IOException;
 import java.nio.file.Files;

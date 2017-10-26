@@ -1,7 +1,7 @@
-package bg.softuni.repository;
+package BashSoft.src.bashsoft.repository;
 
-import bg.softuni.staticData.ExceptionMessages;
-import bg.softuni.io.OutputWriter;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.io.OutputWriter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

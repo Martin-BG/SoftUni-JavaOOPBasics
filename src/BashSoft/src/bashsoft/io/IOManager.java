@@ -1,7 +1,7 @@
-package bg.softuni.io;
+package BashSoft.src.bashsoft.io;
 
-import bg.softuni.staticData.SessionData;
-import bg.softuni.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.staticData.SessionData;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.Queue;

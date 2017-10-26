@@ -1,8 +1,8 @@
-package bg.softuni.network;
+package BashSoft.src.bashsoft.network;
 
-import bg.softuni.io.OutputWriter;
-import bg.softuni.staticData.ExceptionMessages;
-import bg.softuni.staticData.SessionData;
+import BashSoft.src.bashsoft.io.OutputWriter;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
+import BashSoft.src.bashsoft.staticData.SessionData;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

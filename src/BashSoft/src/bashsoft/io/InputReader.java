@@ -1,6 +1,6 @@
-package bg.softuni.io;
+package BashSoft.src.bashsoft.io;
 
-import bg.softuni.staticData.SessionData;
+import BashSoft.src.bashsoft.staticData.SessionData;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

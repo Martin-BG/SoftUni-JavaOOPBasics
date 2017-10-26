@@ -1,6 +1,6 @@
-package bg.softuni;
+package BashSoft.src.bashsoft;
 
-import bg.softuni.io.InputReader;
+import BashSoft.src.bashsoft.io.InputReader;
 
 public class Main {
 

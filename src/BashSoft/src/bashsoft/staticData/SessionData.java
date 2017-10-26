@@ -1,4 +1,4 @@
-package bg.softuni.staticData;
+package BashSoft.src.bashsoft.staticData;
 
 import java.util.HashSet;
 

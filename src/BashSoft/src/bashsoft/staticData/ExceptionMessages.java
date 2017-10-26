@@ -1,4 +1,4 @@
-package bg.softuni.staticData;
+package BashSoft.src.bashsoft.staticData;
 
 public class ExceptionMessages {
     public static final String EXAMPLE_EXCEPTION_MESSAGE = "Example message.";
