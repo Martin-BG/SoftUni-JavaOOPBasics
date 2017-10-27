@@ -14,6 +14,10 @@ class Bank {
         this.accounts = new HashMap<>();
     }
 
+    static void setInterestRate(double newInterestRate) {
+        rate = newInterestRate;
+    }
+
     private boolean hasAccount(int id) {
         return this.accounts.containsKey(id);
     }
@@ -29,10 +33,6 @@ class Bank {
             throw new IllegalArgumentException("Account does not exist");
         }
         return this.accounts.get(id);
-    }
-
-    static void setInterestRate(double newInterestRate) {
-        rate = newInterestRate;
     }
 
     double getInterest(int id, int years) {

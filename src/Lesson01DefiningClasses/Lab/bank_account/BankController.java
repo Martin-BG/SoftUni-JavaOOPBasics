@@ -24,20 +24,20 @@ class BankController {
             }
 
             switch (command) {
-                case "create":
-                    create(id);
-                    break;
-                case "deposit":
-                    deposit(id, amount);
-                    break;
-                case "withdraw":
-                    withdraw(id, amount);
-                    break;
-                case "print":
-                    printAccountInfo(id);
-                    break;
-                default:
-                    break;
+            case "create":
+                create(id);
+                break;
+            case "deposit":
+                deposit(id, amount);
+                break;
+            case "withdraw":
+                withdraw(id, amount);
+                break;
+            case "print":
+                printAccountInfo(id);
+                break;
+            default:
+                break;
             }
         }
     }

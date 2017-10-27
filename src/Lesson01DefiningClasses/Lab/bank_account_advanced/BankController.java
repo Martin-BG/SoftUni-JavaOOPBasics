@@ -18,20 +18,20 @@ class BankController {
             String[] tokens = input.split("\\s+");
             String command = tokens[0];
             switch (command) {
-                case "create":
-                    create();
-                    break;
-                case "deposit":
-                    deposit(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
-                    break;
-                case "setinterest":
-                    setInterest(Double.parseDouble(tokens[1]));
-                    break;
-                case "getinterest":
-                    getInterest(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
-                    break;
-                default:
-                    break;
+            case "create":
+                create();
+                break;
+            case "deposit":
+                deposit(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
+                break;
+            case "setinterest":
+                setInterest(Double.parseDouble(tokens[1]));
+                break;
+            case "getinterest":
+                getInterest(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
+                break;
+            default:
+                break;
             }
         }
     }
