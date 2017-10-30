@@ -6,6 +6,7 @@ class Dough extends BaseComponent {
     private static final String INVALID_WEIGHT_TEXT = "Dough weight should be in the range [1..200].";
     private static final double MIN_WEIGHT = 1.0;
     private static final double MAX_WEIGHT = 200.0;
+
     private Flour flour;
     private Technique technique;
 

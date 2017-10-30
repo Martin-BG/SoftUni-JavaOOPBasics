@@ -6,6 +6,7 @@ class Topping extends BaseComponent {
     private static final String INVALID_WEIGHT_TEXT = "%s weight should be in the range [1..50].";
     private static final double MIN_WEIGHT = 1.0;
     private static final double MAX_WEIGHT = 50.0;
+
     private Type type;
 
     Topping(String type, double weight) {
