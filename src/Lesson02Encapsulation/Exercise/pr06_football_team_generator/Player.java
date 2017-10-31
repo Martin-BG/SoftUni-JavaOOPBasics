@@ -2,15 +2,17 @@ package Lesson02Encapsulation.Exercise.pr06_football_team_generator;
 
 public class Player {
 
+    private static final String INVALID_NAME = "A name should not be empty.";
+
     private String name;
     private Stats stats;
 
-    public Player(String name, int... stats) {
+    Player(String name, int... stats) {
         this.setName(name);
         this.stats = new Stats(stats);
     }
 
-    int getOverallSkill() {
+    double getOverallSkill() {
         return this.stats.getOverallSkill();
     }
 
@@ -20,7 +22,7 @@ public class Player {
 
     private void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(Constants.INVALID_NAME);
+            throw new IllegalArgumentException(INVALID_NAME);
         }
         this.name = name;
     }
@@ -28,7 +30,7 @@ public class Player {
     private class Stats {
         private static final int MIN_VALUE = 0;
         private static final int MAX_VALUE = 100;
-        private static final String INVALID_VALUE = " should be between " + MIN_VALUE + " and " + MAX_VALUE;
+        private static final String INVALID_VALUE = " should be between " + MIN_VALUE + " and " + MAX_VALUE + ".";
         private static final String ENDURANCE_TEXT = "Endurance";
         private static final String SPRINT_TEXT = "Sprint";
         private static final String DRIBBLE_TEXT = "Dribble";
@@ -40,7 +42,7 @@ public class Player {
         private int dribble;
         private int passing;
         private int shooting;
-        private int overallSkill;
+        private double overallSkill;
 
         Stats(int... stats) {
             this.setEndurance(stats[0]);
@@ -52,7 +54,7 @@ public class Player {
         }
 
         private void setOverallSkill() {
-            this.overallSkill = (this.endurance + this.sprint + this.dribble + this.passing + this.shooting) / 5;
+            this.overallSkill = (this.endurance + this.sprint + this.dribble + this.passing + this.shooting) / 5d;
         }
 
         private void setEndurance(int endurance) {
@@ -91,7 +93,7 @@ public class Player {
 
         }
 
-        private int getOverallSkill() {
+        private double getOverallSkill() {
             return overallSkill;
         }
     }
