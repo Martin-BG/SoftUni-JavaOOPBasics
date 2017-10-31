@@ -3,6 +3,7 @@ package BashSoft.src.bashsoft.network;
 import BashSoft.src.bashsoft.io.OutputWriter;
 import BashSoft.src.bashsoft.staticData.ExceptionMessages;
 import BashSoft.src.bashsoft.staticData.SessionData;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.nio.channels.ReadableByteChannel;
 
 public class DownloadManager {
 
-    public static void download(String fileUrl) {
+    public void download(String fileUrl) {
         URL url;
         ReadableByteChannel rbc = null;
         FileOutputStream fos = null;
@@ -56,7 +57,7 @@ public class DownloadManager {
         }
     }
 
-    public static void downloadOnNewThread(String fileUrl) {
+    public void downloadOnNewThread(String fileUrl) {
         Thread thread = new Thread(() -> download(fileUrl));
         thread.setDaemon(false);
         OutputWriter.writeMessageOnNewLine(
@@ -65,7 +66,7 @@ public class DownloadManager {
         thread.start();
     }
 
-    private static String extractNameOfFile(String fileUrl) throws MalformedURLException {
+    private String extractNameOfFile(String fileUrl) throws MalformedURLException {
         int indexOfLastSlash = fileUrl.lastIndexOf('/');
         if (indexOfLastSlash == -1) {
             throw new MalformedURLException(ExceptionMessages.INVALID_PATH);

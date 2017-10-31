@@ -1,14 +1,14 @@
 package BashSoft.src.bashsoft.repository;
 
-import BashSoft.src.bashsoft.staticData.ExceptionMessages;
 import BashSoft.src.bashsoft.io.OutputWriter;
+import BashSoft.src.bashsoft.staticData.ExceptionMessages;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Predicate;
 
-public class RepositoryFilters {
-    public static void printFilteredStudents(
+public class RepositoryFilter {
+    public void printFilteredStudents(
             HashMap<String, ArrayList<Integer>> courseData,
             String filterType,
             Integer numberOfStudents) {
@@ -44,16 +44,16 @@ public class RepositoryFilters {
         }
     }
 
-    private static Predicate<Double> createFilter(String filterType) {
+    private Predicate<Double> createFilter(String filterType) {
         switch (filterType) {
-            case "excellent":
-                return mark -> mark >= 5.0;
-            case "average":
-                return mark -> 3.5 <= mark && mark < 5.0;
-            case "poor":
-                return mark -> mark < 3.5;
-            default:
-                return null;
+        case "excellent":
+            return mark -> mark >= 5.0;
+        case "average":
+            return mark -> 3.5 <= mark && mark < 5.0;
+        case "poor":
+            return mark -> mark < 3.5;
+        default:
+            return null;
         }
     }
 }

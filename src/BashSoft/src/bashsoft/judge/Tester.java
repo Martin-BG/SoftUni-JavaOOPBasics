@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Tester {
 
-    public static void compareContent(String actualOutput, String expectedOutput) {
+    public void compareContent(String actualOutput, String expectedOutput) {
         try {
 
             OutputWriter.writeMessageOnNewLine("Reading files...");
@@ -33,7 +33,7 @@ public class Tester {
         }
     }
 
-    private static List<String> readTextFile(String filePath) throws IOException {
+    private List<String> readTextFile(String filePath) throws IOException {
         List<String> text = new ArrayList<>();
 
         File file = new File(filePath);
@@ -53,15 +53,14 @@ public class Tester {
         return text;
     }
 
-    private static String getMismatchPath(String expectedOutput) {
+    private String getMismatchPath(String expectedOutput) {
         int index = expectedOutput.lastIndexOf('\\');
         String directoryPath = expectedOutput.substring(0, index);
         return directoryPath + "\\mismatch.txt";
     }
 
-    private static void printOutput(String mismatchPath, boolean isMismatch) throws IOException {
-        if (isMismatch)
-        {
+    private void printOutput(String mismatchPath, boolean isMismatch) throws IOException {
+        if (isMismatch) {
             List<String> mismatchStrings = Files.readAllLines(Paths.get(mismatchPath));
             mismatchStrings.forEach(OutputWriter::writeMessageOnNewLine);
             return;
@@ -70,11 +69,10 @@ public class Tester {
         OutputWriter.writeMessageOnNewLine("Files are identical. There are no mismatches.");
     }
 
-    private static boolean compareStrings(
+    private boolean compareStrings(
             List<String> actualOutputString,
             List<String> expectedOutputString,
-            String mismatchPath)
-    {
+            String mismatchPath) {
         OutputWriter.writeMessageOnNewLine("Comparing files...");
         String output = "";
         boolean isMismatch = false;

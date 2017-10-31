@@ -13,20 +13,38 @@ import java.util.regex.Pattern;
 
 public class StudentsRepository {
 
-    private static boolean isDataInitialized = false;
-    private static HashMap<String, HashMap<String, ArrayList<Integer>>> studentsByCourse;
+    private HashMap<String, HashMap<String, ArrayList<Integer>>> studentsByCourse;
+    private boolean isDataInitialized;
+    private RepositoryFilter filter;
+    private RepositorySorter sorter;
 
-    public static void initializeData(String fileName) throws IOException {
-        if (isDataInitialized) {
+    public StudentsRepository(RepositoryFilter filter, RepositorySorter sorter) {
+        this.filter = filter;
+        this.sorter = sorter;
+    }
+
+    public void loadData(String fileName) throws IOException {
+        if (this.isDataInitialized) {
             OutputWriter.displayException(ExceptionMessages.DATA_ALREADY_INITIALIZED);
             return;
         }
 
-        studentsByCourse = new HashMap<>();
-        readData(fileName);
+        this.studentsByCourse = new HashMap<>();
+        this.readData(fileName);
+        this.isDataInitialized = true;
     }
 
-    private static void readData(String fileName) throws IOException {
+    public void unloadData() {
+        if (!this.isDataInitialized) {
+            OutputWriter.displayException(ExceptionMessages.DATA_NOT_INITIALIZED);
+            return;
+        }
+
+        this.studentsByCourse = null;
+        this.isDataInitialized = false;
+    }
+
+    private void readData(String fileName) throws IOException {
         String regex = "([A-Z][a-zA-Z#+]*_[A-Z][a-z]{2}_\\d{4})\\s+([A-Z][a-z]{0,3}\\d{2}_\\d{2,4})\\s+(\\d+)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher;
@@ -60,19 +78,7 @@ public class StudentsRepository {
         OutputWriter.writeMessageOnNewLine("Data read.");
     }
 
-    public static void printFilteredStudents(String course, String filter, Integer numberOfStudents) {
-        if (! isQueryForCoursePossible(course)) {
-            return;
-        }
-
-        if (numberOfStudents == null) {
-            numberOfStudents = studentsByCourse.get(course).size();
-        }
-
-        RepositoryFilters.printFilteredStudents(studentsByCourse.get(course), filter, numberOfStudents);
-    }
-
-    public static void printOrderedStudents(String course, String compareType, Integer numberOfStudents) {
+    public void printFilteredStudents(String course, String filter, Integer numberOfStudents) {
         if (!isQueryForCoursePossible(course)) {
             return;
         }
@@ -81,10 +87,22 @@ public class StudentsRepository {
             numberOfStudents = studentsByCourse.get(course).size();
         }
 
-        RepositorySorters.printSortedStudents(studentsByCourse.get(course), compareType, numberOfStudents);
+        this.filter.printFilteredStudents(studentsByCourse.get(course), filter, numberOfStudents);
     }
 
-    public static void getStudentMarksInCourse(String course, String student) {
+    public void printOrderedStudents(String course, String compareType, Integer numberOfStudents) {
+        if (!isQueryForCoursePossible(course)) {
+            return;
+        }
+
+        if (numberOfStudents == null) {
+            numberOfStudents = studentsByCourse.get(course).size();
+        }
+
+        this.sorter.printSortedStudents(studentsByCourse.get(course), compareType, numberOfStudents);
+    }
+
+    public void getStudentMarksInCourse(String course, String student) {
         if (!isQueryForStudentPossible(course, student)) {
             return;
         }
@@ -93,7 +111,7 @@ public class StudentsRepository {
         OutputWriter.printStudent(student, marks);
     }
 
-    public static void getStudentsByCourse(String course) {
+    public void getStudentsByCourse(String course) {
         if (!isQueryForCoursePossible(course)) {
             return;
         }
@@ -104,7 +122,7 @@ public class StudentsRepository {
         }
     }
 
-    private static boolean isQueryForCoursePossible(String courseName) {
+    private boolean isQueryForCoursePossible(String courseName) {
         if (!isDataInitialized) {
             OutputWriter.displayException(ExceptionMessages.DATA_NOT_INITIALIZED);
             return false;
@@ -118,7 +136,7 @@ public class StudentsRepository {
         return true;
     }
 
-    private static boolean isQueryForStudentPossible(String courseName, String studentName) {
+    private boolean isQueryForStudentPossible(String courseName, String studentName) {
         if (!isQueryForCoursePossible(courseName)) {
             return false;
         }
@@ -131,34 +149,34 @@ public class StudentsRepository {
         return true;
     }
 
-    public static void filterAndTake(String courseName, String filter) {
+    public void filterAndTake(String courseName, String filter) {
         int studentsToTake = studentsByCourse.get(courseName).size();
         filterAndTake(courseName, filter, studentsToTake);
     }
 
-    public static void filterAndTake(
+    public void filterAndTake(
             String courseName, String filter, int studentsToTake) {
         if (!isQueryForCoursePossible(courseName)) {
             return;
         }
 
-        RepositoryFilters.printFilteredStudents(
+        this.filter.printFilteredStudents(
                 studentsByCourse.get(courseName),
                 filter, studentsToTake);
     }
 
-    public static void orderAndTake(
+    public void orderAndTake(
             String courseName, String orderType, int studentsToTake) {
         if (!isQueryForCoursePossible(courseName)) {
             return;
         }
 
-        RepositorySorters.printSortedStudents(
+        this.sorter.printSortedStudents(
                 studentsByCourse.get(courseName),
                 orderType, studentsToTake);
     }
 
-    public static void orderAndTake(String courseName, String orderType) {
+    public void orderAndTake(String courseName, String orderType) {
         int studentsToTake = studentsByCourse.get(courseName).size();
         orderAndTake(courseName, orderType, studentsToTake);
     }
