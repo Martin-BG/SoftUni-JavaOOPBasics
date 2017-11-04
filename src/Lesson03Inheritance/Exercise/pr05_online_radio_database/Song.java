@@ -22,7 +22,7 @@ class Song {
     }
 
     private void setSongName(String songName) throws InvalidSongNameException {
-        if (artistName == null || artistName.length() < 3 || artistName.length() > 30) {
+        if (songName == null || songName.length() < 3 || songName.length() > 30) {
             throw new InvalidSongNameException("Song name should be between 3 and 30 symbols.");
         }
         this.songName = songName;
