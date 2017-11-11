@@ -59,7 +59,7 @@ class Controller {
         StringBuilder builder = new StringBuilder();
         builder.append(type).append(" Nation").append("\n");
 
-        if (currentNation.getBenders().size() > 0) {
+        if (currentNation != null && currentNation.getBenders().size() > 0) {
             builder.append("Benders:").append("\n");
             for (Bender bender : currentNation.getBenders()) {
                 builder.append(bender).append("\n");
@@ -68,7 +68,7 @@ class Controller {
             builder.append("Benders: None").append("\n");
         }
 
-        if (currentNation.getMonuments().size() > 0) {
+        if (currentNation != null && currentNation.getMonuments().size() > 0) {
             builder.append("Monuments:").append("\n");
             for (Monument monument : currentNation.getMonuments()) {
                 builder.append(monument).append("\n");
